@@ -2,13 +2,17 @@ FROM amazonlinux:2
 
 WORKDIR /app
 
-COPY backend/requierments.txt .
+COPY backend/venv /app/venv
+
+COPY backend/requierments.txt /app
 
 RUN yum install -y python3
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN /app/venv/bin/python -m pip install --no-cache-dir -r requirements.txt
 
-COPY backend/ .
+COPY backend/ /app
 
 EXPOSE 5000
 
-CMD ["python3", "app.py"]
+ENV NAME World
+
+CMD ["/app/venv/bin/python", "app.py"]
