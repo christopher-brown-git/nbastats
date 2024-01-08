@@ -1,0 +1,14 @@
+FROM amazonlinux:2
+
+WORKDIR /app
+
+COPY backend/requierments.txt .
+
+RUN yum install -y python3
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+COPY backend/ .
+
+EXPOSE 5000
+
+CMD ["python3", "app.py"]
