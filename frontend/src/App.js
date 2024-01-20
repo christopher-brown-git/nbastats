@@ -1,10 +1,11 @@
 import React from 'react';
 import UserInput from './UserInput';
+import Title from './Title';
 
 const App = () => {
     return (
-        <div>
-            <h1> NBA Stats </h1>
+        <div className="flex flex-col items-center">
+            <Title/>
             <UserInput/>
         </div>
     );
